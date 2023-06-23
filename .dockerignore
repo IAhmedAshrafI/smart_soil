@@ -1,0 +1,7 @@
+db.sqlite3
+.Dockerfile.swp
+
+venv
+venv/
+/venv
+
