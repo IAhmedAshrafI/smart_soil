@@ -12,4 +12,4 @@ echo "Apply database migrations"
 python /web/manage.py migrate
 
 echo "Run server"
-python /web/manage.py runserver 143.42.59.132:9000
+python /web/manage.py runserver 9000
