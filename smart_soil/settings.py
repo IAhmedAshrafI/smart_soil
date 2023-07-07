@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'smart_soil.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 
@@ -132,13 +132,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "smart soil Admin",
+    "site_title": "Smart Rice Irrigation Admin",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "smart soil",
+    "site_header": "Smart Rice Irrigation",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "smart soil",
+    "site_brand": "Smart Rice Irrigation",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
     # "site_logo": "static/images/soil.png",
@@ -156,14 +156,14 @@ JAZZMIN_SETTINGS = {
     "site_icon": True,
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to the smart soil",
+    "welcome_sign": "Welcome to the Smart Rice Irrigation",
 
     # Copyright on the footer
-    "copyright": "smart soil",
+    "copyright": "Smart Rice Irrigation",
 
     # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string
-  
+
     "search_model": ["auth.User", "auth.Group"],
 
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
