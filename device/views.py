@@ -12,9 +12,9 @@ class ZoneLevel(APIView):
         zones = Zone.objects.all()
 
         error = {"error", "failed"}
-        if not zones and len(zones) < 10:
+        if not zones and len(zones) < 20:
             return Response(error, status=status.HTTP_400_BAD_REQUEST)
-        if len(list(kwargs.values())) < 10:
+        if len(list(kwargs.values())) < 20:
             return Response(error, status=status.HTTP_400_BAD_REQUEST)
 
         for value, zone in zip(kwargs.values(), zones):
