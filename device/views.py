@@ -22,7 +22,7 @@ class ZoneLevel(APIView):
             zone_history = Zone_History()
             zone_history.zone = zone
             zone_history.level = value
-            zone_history.time = datetime.datetime.now(timezone.utc)
+            zone_history.time = datetime.now()
             zone.save()
             zone_history.save()
         data = {"created": "success!"}
