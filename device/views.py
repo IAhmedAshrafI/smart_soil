@@ -19,13 +19,11 @@ class ZoneLevel(APIView):
             return Response(error, status=status.HTTP_400_BAD_REQUEST)
 
         for value, zone in zip(kwargs.values(), zones):
-            utc_time = timezone.now()
-            local_time = utc_time.astimezone(timezone.get_current_timezone())
             zone.level = value
             zone_history = Zone_History()
             zone_history.zone = zone
             zone_history.level = value
-            zone_history.time = local_time
+            zone_history.time = timezone.now()
             zone.save()
             zone_history.save()
         data = {"created": "success!"}
