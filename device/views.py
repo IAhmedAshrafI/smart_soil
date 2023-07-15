@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Zone, Zone_History
-from datetime import datetime
+import datetime
 from django.http import HttpResponse
 import csv
 from django.utils import timezone
@@ -23,7 +23,7 @@ class ZoneLevel(APIView):
             zone_history = Zone_History()
             zone_history.zone = zone
             zone_history.level = value
-            zone_history.time = timezone.now()
+            zone_history.time = datetime.datetime.now()
             zone.save()
             zone_history.save()
         data = {"created": "success!"}
