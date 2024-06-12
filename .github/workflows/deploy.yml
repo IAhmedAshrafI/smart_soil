@@ -11,7 +11,11 @@ jobs:
     steps:
       - name: Decrypt SSH private key
         run: |
+          pwd
+          ls -la
           mkdir -p ~/.ssh
+          pwd
+          ls -la
           openssl aes-256-cbc -d -in id_rsa.enc -out ~/.ssh/id_rsa -k my_secret_key
           chmod 600 ~/.ssh/id_rsa
       - name: Add SSH private key to the agent
