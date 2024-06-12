@@ -12,7 +12,7 @@ jobs:
       - name: Decrypt SSH private key
         run: |
           pwd
-          ls -la
+          ls -la ../
           echo $GITHUB_WORKSPACE
           cd $GITHUB_WORKSPACE  # Change to the root directory of your project
           mkdir -p ~/.ssh
