@@ -13,6 +13,7 @@ jobs:
         run: |
           pwd
           ls -la
+          echo '$GITHUB_WORKSPACE'
           cd $GITHUB_WORKSPACE  # Change to the root directory of your project
           mkdir -p ~/.ssh
           pwd
