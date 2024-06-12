@@ -1,7 +1,7 @@
 FROM python:3.8.6
 
 # Expose project's port
-EXPOSE 9000
+EXPOSE 9001
 
 # Always set a working directory
 WORKDIR /web
