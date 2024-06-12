@@ -1,0 +1,31 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+
+      - name: Decrypt SSH private key
+        run: |
+          mkdir -p ~/.ssh
+          openssl aes-256-cbc -d -in id_rsa.enc -out ~/.ssh/id_rsa -k my_secret_key
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: SSH to server and build Docker image
+        env:
+          SSH_USER: root
+          DEV_IP_ADDRESS: 143.42.59.132
+        run: |
+          ssh-keyscan -H $DEV_IP_ADDRESS >> ~/.ssh/known_hosts
+          ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa $SSH_USER@$DEV_IP_ADDRESS "cd ~/smart_soil/ && ls -la"
