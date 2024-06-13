@@ -14,6 +14,12 @@ class Zone(models.Model):
 class Device(models.Model):
     device_id = models.CharField(max_length=255)
     description = models.CharField(max_length=255, null=True, blank=True)
+
+    STATUS_CHOICES = [
+        (0, 'Inactive'),
+        (1, 'Active'),
+    ]
+    status = models.IntegerField(choices=STATUS_CHOICES, default=0)
     sensors = models.ForeignKey(
         'Sensor', related_name='devices', on_delete=models.CASCADE
     )
@@ -24,7 +30,7 @@ class Device(models.Model):
 
 class Sensor(models.Model):
     sensor_id = models.CharField(max_length=255, primary_key=True)
-    sensor_type = models.CharField(max_length=255)
+    sensor_type = models.CharField(max_length=255, null=True, blank=True)
     value = models.IntegerField()
 
     def __str__(self) -> str:

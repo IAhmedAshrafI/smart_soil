@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.http import HttpResponse
-from django.db.models import F
 from .models import Zone, Device, Sensor, CombinedView
 import csv
 
@@ -56,7 +55,7 @@ class ZoneAdmin(admin.ModelAdmin):
 
 class DeviceAdmin(admin.ModelAdmin):
     list_filter = ["device_id"]
-    list_display = ("device_id", "description",
+    list_display = ("device_id", "description", "status",
                     "get_sensor")
     search_fields = ["device_id"]
     actions = ['export']
@@ -72,10 +71,10 @@ class DeviceAdmin(admin.ModelAdmin):
         )
         writer = csv.writer(response)
         writer.writerow(
-            ["device_id", "description", "sensor"])
+            ["device_id", "status", "description", "sensor"])
         for device in queryset:
             writer.writerow([device.device_id,
-                            device.description, device.sensors.sensor_id])
+                            device.description, device.status, device.sensors.sensor_id])
         return response
 
 
@@ -100,7 +99,7 @@ class SensorAdmin(admin.ModelAdmin):
 
 class CombinedAdmin(admin.ModelAdmin):
     list_display = ("sensor_id", "device_id", "zone_name",
-                    "sensor_type", "sensor_value", "device_description")
+                    "sensor_type", "sensor_value", "device_description", "status")
 
     search_fields = ["zone__name", "device__device_id", "sensor__sensor_id"]
     actions = ['export']
@@ -121,6 +120,10 @@ class CombinedAdmin(admin.ModelAdmin):
         return obj.devices.description
     device_description.short_description = 'Device Description'
 
+    def status(self, obj):
+        return obj.devices.status
+    status.short_description = 'Status'
+
     def sensor_id(self, obj):
         return obj.devices.sensors.sensor_id
     sensor_id.short_description = 'Sensor ID'
@@ -139,11 +142,16 @@ class CombinedAdmin(admin.ModelAdmin):
             headers={"Content-Disposition": 'attachment; filename="Combined.csv"'},
         )
         writer = csv.writer(response)
-        writer.writerow(["Zone Name", "Device ID", "Device Description",
-                        "Sensor ID", "Sensor Type", "Sensor Value"])
+        writer.writerow(["Sensor ID", "Device ID", "Zone Name",
+                        "Sensor Type", "Sensor Value", "Device Description", "Status"])
         for obj in queryset:
-            writer.writerow([obj.name, obj.devices.device_id, obj.devices.description,
-                            obj.devices.sensors.sensor_id, obj.devices.sensors.sensor_type, obj.devices.sensors.value])
+            writer.writerow([obj.devices.sensors.sensor_id,
+                             obj.devices.device_id,
+                             obj.name,
+                             obj.devices.sensors.sensor_type,
+                             obj.devices.sensors.value,
+                             obj.devices.description,
+                             obj.devices.status])
         return response
 
 

@@ -1,11 +1,13 @@
+from django.db import connection
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Device
+from .models import Device, Sensor, CombinedView, Zone
 from datetime import datetime
 from django.http import HttpResponse
 import csv
-
+from django.shortcuts import get_object_or_404
+from django.views import View
 
 # class ZoneLevel(APIView):
 #     def get(self, request, **kwargs):
@@ -29,21 +31,75 @@ import csv
 #         return Response(data, status=status.HTTP_200_OK)
 
 
+class SensorDetails(APIView):
+    def post(self, request, pk, pk1):
+
+        sensor = Sensor(sensor_id=pk, sensor_type=None, value=pk1)
+
+        error = {"error": "failed"}
+
+        if not sensor:
+            return Response(error, status=status.HTTP_400_BAD_REQUEST)
+
+        sensor.save()
+
+        data = {"created": "success!"}
+        return Response(data, status=status.HTTP_201_CREATED)
+
+
+class SetDeviceFlag(APIView):
+    def post(self, request, pk, pk1):
+        device = get_object_or_404(Device, device_id=pk)
+
+        if pk1 != 1 and pk1 != 0:
+            return Response({"error": "Invalid flag value"}, status=status.HTTP_400_BAD_REQUEST)
+
+        device.status = pk1
+        device.save()
+
+        data = {"created": "success!"}
+        return Response(data, status=status.HTTP_201_CREATED)
+
+
 class ExportToCsv(APIView):
     def get(self, request, **kwargs):
-        device = Device.objects.all()
+        # Fetch data from the related models
+        combined_data = []
+        zones = Zone.objects.all()
+        for zone in zones:
+            device = zone.devices
+            if device:
+                sensor = device.sensors
+                combined_data.append({
+                    'name': zone.name,
+                    'device_id': device.device_id,
+                    'description': device.description,
+                    "status": device.status,
+                    'sensor_id': sensor.sensor_id if sensor else None,
+                    'sensor_type': sensor.sensor_type if sensor else None,
+                    'value': sensor.value if sensor else None,
+                })
+
         response = HttpResponse(
             content_type="text/csv",
-            headers={
-                "Content-Disposition": 'attachment; filename="somefilename.csv"'},
+            headers={"Content-Disposition": 'attachment; filename="Combined.csv"'},
         )
 
         writer = csv.writer(response)
-        writer.writerow(["device_id", "zone", "description"])
-        device_fields = Device.values_list(
-            "device_id", "zone", "description")
-        for device in device_fields:
-            writer.writerow(device)
+        writer.writerow(["Sensor ID", "Device ID", "Zone Name",
+                        "Sensor Type", "Sensor Value", "Device Description", "Status"])
+
+        for row in combined_data:
+            writer.writerow([
+                row['sensor_id'],
+                row['device_id'],
+                row['name'],
+                row['sensor_type'],
+                row['value'],
+                row['description'],
+                row['status']
+            ])
+
         return response
 
 
