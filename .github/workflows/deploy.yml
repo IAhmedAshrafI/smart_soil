@@ -1,0 +1,31 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to your main branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decrypt SSH private key
+        run: |
+          pwd
+          ls -la ../
+          echo $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE  # Change to the root directory of your project
+          mkdir -p ~/.ssh
+          pwd
+          ls -la
+          openssl aes-256-cbc -d -in id_rsa.enc -out ~/.ssh/id_rsa -k my_secret_key
+          chmod 600 ~/.ssh/id_rsa
+      - name: Add SSH private key to the agent
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_rsa
+      - name: Add SSH known hosts
+        run: ssh-keyscan -H 143.42.59.132 >> ~/.ssh/known_hosts
+      - name: SSH into the server and build the Docker image
+        run: |
+          ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa root@$143.42.59.132 "cd ~/smart_soil/ && ls -la"
