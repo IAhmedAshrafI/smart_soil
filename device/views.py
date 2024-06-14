@@ -34,16 +34,26 @@ from django.views import View
 class SensorDetails(APIView):
     def post(self, request, pk, pk1):
 
-        sensor = Sensor(sensor_id=pk, sensor_type=None, value=pk1)
-
         error = {"error": "failed"}
+        data = {"created": "success!"}
+        try:
+            get_sensor = Sensor.objects.get(sensor_id=pk)
 
+        except Sensor.DoesNotExist:
+            sensor = Sensor(sensor_id=pk, value=pk1)
+
+            if not sensor:
+                return Response(error, status=status.HTTP_400_BAD_REQUEST)
+
+            sensor.save()
+
+            return Response(data, status=status.HTTP_201_CREATED)
+
+        s_type = get_sensor.sensor_type
+        sensor = Sensor(sensor_id=pk, sensor_type=s_type, value=pk1)
         if not sensor:
             return Response(error, status=status.HTTP_400_BAD_REQUEST)
-
         sensor.save()
-
-        data = {"created": "success!"}
         return Response(data, status=status.HTTP_201_CREATED)
 
 
