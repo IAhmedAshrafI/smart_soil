@@ -1,34 +1,7 @@
 from django.contrib import admin
 from django.http import HttpResponse
-from .models import Zone, Device, Sensor, CombinedView
+from .models import Zone, Device, Sensor, CombinedView, SensorHistory
 import csv
-
-
-# class ZoneHistoryAdmin(admin.ModelAdmin):
-#     list_filter = [
-#         "zone",
-#     ]
-#     list_display = ("zone", "level", "time",)
-#     search_fields = (
-#         "zone",
-#     )
-#     actions = ['export']
-
-#     def export(self, request, queryset):
-#         print(request)
-#         zone_history = queryset.all()
-#         response = HttpResponse(
-#             content_type="text/csv",
-#             headers={
-#                 "Content-Disposition": 'attachment; filename="Zone History.csv"'},
-#         )
-
-#         writer = csv.writer(response)
-#         writer.writerow(["zone", "level", "time"])
-#         zone_fields = zone_history.values_list("zone", "level", "time")
-#         for zone in zone_fields:
-#             writer.writerow(zone)
-#         return response
 
 
 class ZoneAdmin(admin.ModelAdmin):
@@ -94,6 +67,27 @@ class SensorAdmin(admin.ModelAdmin):
         for sensor in queryset:
             writer.writerow(
                 [sensor.sensor_id, sensor.sensor_type, sensor.value])
+        return response
+
+
+@admin.register(SensorHistory)
+class SensorHistoryAdmin(admin.ModelAdmin):
+    list_display = ('sensor', 'value', 'timestamp', 'modified_at')
+    search_fields = ('sensor__sensor_id', 'value')
+    list_filter = ('timestamp', 'modified_at')
+    actions = ['export']
+
+    def export(self, request, queryset):
+        response = HttpResponse(
+            content_type="text/csv",
+            headers={
+                "Content-Disposition": 'attachment; filename="Sensor History.csv"'},
+        )
+        writer = csv.writer(response)
+        writer.writerow(["sensor", "value", "timestamp", "modified_at"])
+        for sensor in queryset:
+            writer.writerow(
+                [sensor.sensor_id, sensor.value, sensor.timestamp, sensor.modified_at])
         return response
 
 

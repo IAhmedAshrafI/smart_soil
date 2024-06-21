@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.utils import timezone
 
 
 class Zone(models.Model):
@@ -37,8 +40,27 @@ class Sensor(models.Model):
         return self.sensor_id
 
 
+class SensorHistory(models.Model):
+    sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)
+    value = models.IntegerField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(null=True, blank=True)
+
+
 class CombinedView(models.Model):
     class Meta:
-        managed = False  # No migrations will be created for this model
+        managed = False
         verbose_name = 'Combined View'
         verbose_name_plural = 'Combined Views'
+
+
+@receiver(post_save, sender=Sensor)
+def create_or_update_sensor_history(sender, instance, created, **kwargs):
+    if created:
+        SensorHistory.objects.create(sensor=instance, value=instance.value)
+    else:
+        SensorHistory.objects.create(
+            sensor=instance,
+            value=instance.value,
+            modified_at=timezone.now()
+        )
