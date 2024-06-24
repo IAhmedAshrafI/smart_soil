@@ -8,5 +8,8 @@ django-jazzmin==2.6.0
 djangorestframework
 gunicorn
 django-cors-headers
+psycopg2
+psycopg2-binary
+
 
 

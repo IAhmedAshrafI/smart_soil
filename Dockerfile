@@ -13,10 +13,10 @@ RUN pip --timeout=1000 install -r requirments.txt
 # Copy all project to the image
 COPY ./ ./
 
-# Copy the entry point and change own for the .sh file
-COPY ./smart_soil.sh /
-RUN chmod +x smart_soil.sh
-
-# Execute the entry point sh file
-ENTRYPOINT ["./smart_soil.sh"]
+## Copy the entry point and change own for the .sh file
+#COPY ./smart_soil.sh /
+#RUN chmod +x smart_soil.sh
+#
+## Execute the entry point sh file
+#ENTRYPOINT ["./smart_soil.sh"]
 

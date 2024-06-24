@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ba1d9b27-2c93-43a3-9609-d1d7ddd11d50" name="Changes" comment="update CSRF_TRUSTED_ORIGINS">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/device/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0002_alter_zone_level_delete_level.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0002_device_id_zone_id_alter_device_device_id_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0003_alter_zone_level.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0003_sensor_device_sensors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0004_alter_zone_level.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0004_remove_device_value_sensor_value.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0005_combinedview_alter_sensor_sensor_type.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0005_zone_history.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0006_alter_device_sensors_alter_zone_devices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0007_alter_device_sensors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0008_alter_device_sensors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0009_alter_device_sensors_alter_zone_devices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0010_alter_device_sensors_alter_zone_devices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/migrations/0011_device_status.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smart_soil/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/smart_soil/settings.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="prod" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;mohameda2265&quot;
+  }
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1718163228" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="prod" />
+                    <option name="lastUsedInstant" value="1718163227" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/IAhmedAshrafI/smart_soil.git&quot;,
+    &quot;accountId&quot;: &quot;667e6d4f-e769-4caf-81bd-2b746bd82e09&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2hl6Ay1yFOdqGWoC5ntje9oJNGA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="smart_soil" type="Python.DjangoServer" factoryName="Django server">
+      <module name="smart_soil" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17890.14" />
+        <option value="bundled-python-sdk-5b207ade9991-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17890.14" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ba1d9b27-2c93-43a3-9609-d1d7ddd11d50" name="Changes" comment="" />
+      <created>1718156176226</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718156176226</updated>
+      <workItem from="1718156177388" duration="7241000" />
+      <workItem from="1719050839352" duration="27000" />
+      <workItem from="1719177535527" duration="2955000" />
+      <workItem from="1719263354761" duration="3999000" />
+    </task>
+    <task id="LOCAL-00001" summary="add actions">
+      <option name="closed" value="true" />
+      <created>1718159833179</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718159833179</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update CSRF_TRUSTED_ORIGINS">
+      <option name="closed" value="true" />
+      <created>1719180194187</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719180194187</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add actions" />
+    <MESSAGE value="update CSRF_TRUSTED_ORIGINS" />
+    <option name="LAST_COMMIT_MESSAGE" value="update CSRF_TRUSTED_ORIGINS" />
+  </component>
+</project>
