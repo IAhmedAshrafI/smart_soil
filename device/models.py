@@ -17,7 +17,6 @@ class Zone(models.Model):
 class Device(models.Model):
     device_id = models.CharField(max_length=255)
     description = models.CharField(max_length=255, null=True, blank=True)
-
     STATUS_CHOICES = [
         (0, 'Inactive'),
         (1, 'Active'),
@@ -43,7 +42,7 @@ class Sensor(models.Model):
 class SensorHistory(models.Model):
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)
     value = models.IntegerField()
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now)
     modified_at = models.DateTimeField(null=True, blank=True)
 
 
